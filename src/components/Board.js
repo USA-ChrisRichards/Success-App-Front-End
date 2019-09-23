@@ -6,8 +6,8 @@ class Board extends Component {
     super(props);
   }
   render() {
-    console.log(this.props);
-    const user = this.props;
+    // console.log(this.props);
+    const user = this.props.user;
     return (
       <div className="ui card">
         <h2>Board Title</h2>

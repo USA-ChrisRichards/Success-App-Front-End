@@ -7,16 +7,16 @@ class Header extends Component {
     return (
       <div className="ui menu">
         <div className="header item" href="...">
-          Our Company
+          GoalsApp
         </div>
         <a className="item" href="...">
           About Us
         </a>
         <a className="item" href="...">
-          Jobs
+          Help
         </a>
         <a className="item" href="...">
-          Locations
+          Resources
         </a>
       </div>
     );
