@@ -1,18 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 import Board from "./Board";
 
-class BoardList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render() {
+const BoardList = props => {
+  const boardsList = props.boards.map(board => {
     return (
-      <div>
-        <Board />
-      </div>
+      <Board
+        key={board.id}
+        board={board}
+        title={board.title}
+        images={props.images}
+        goals={props.goals}
+        // handleNoteClick={props.handleNoteClick}
+      />
     );
-  }
-}
+  });
+  return <div className="ui three stackable cards">{boardsList}</div>;
+};
 
 export default BoardList;

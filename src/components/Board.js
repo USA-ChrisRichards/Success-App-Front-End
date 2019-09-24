@@ -1,26 +1,59 @@
 import React, { Component } from "react";
 import "../App.css";
+import GoalsList from "./GoalsList";
+import ImageCollage from "./ImageCollage";
 
 class Board extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      imagesVisible: false
+    };
   }
+
+  changeBoardView = prevState => {
+    this.setState(prevState => {
+      return { imagesVisible: !this.state.imagesVisible };
+    });
+  };
+
   render() {
+    // console.log(this.state);
     // console.log(this.props);
-    const user = this.props.user;
+    const board = this.props.board;
     return (
       <div className="ui card">
-        <h2>Board Title</h2>
-        <div className="image">
-          <img src={this.props.profile_photo} alt="..." className="board"></img>
-        </div>
+        <h2>
+          {board.title}
+          <button
+            className="ui small icon button"
+            onClick={console.log("some func for edit Board Title")}
+          >
+            <i className="pencil icon"></i>
+          </button>
+          <button
+            className="ui small icon button"
+            onClick={console.log("some func for delete Board")}
+          >
+            <i className="trash icon"></i>
+          </button>
+        </h2>
+        {this.state.imagesVisible ? (
+          <ImageCollage images={this.props.images} />
+        ) : (
+          <GoalsList goals={this.props.goals} />
+        )}
+
         <div className="content">
-          <a className="header">{this.props.first_name}</a>
           <div className="meta">
-            <span className="date">Published 4/23/2019</span>
+            <span className="date">{board.created_at}</span>
           </div>
         </div>
-        <div className="extra content"></div>
+        <div className="extra content">
+          <button className="ui primary button" onClick={this.changeBoardView}>
+            View Images
+          </button>
+        </div>
       </div>
     );
   }

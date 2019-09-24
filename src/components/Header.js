@@ -10,10 +10,10 @@ class Header extends Component {
           GoalsApp
         </div>
         <a className="item" href="...">
-          About Us
+          Login
         </a>
         <a className="item" href="...">
-          Help
+          Sign Up
         </a>
         <a className="item" href="...">
           Resources
