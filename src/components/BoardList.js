@@ -5,16 +5,24 @@ const BoardList = props => {
   const boardsList = props.boards.map(board => {
     return (
       <Board
+        createGoal={props.createGoal}
         key={board.id}
         board={board}
         title={board.title}
         images={props.images}
         goals={props.goals}
-        // handleNoteClick={props.handleNoteClick}
+        handleGoalDelete={props.handleGoalDelete}
+        handleBoardDelete={props.handleBoardDelete}
+        handleEditClick={props.handleEditClick}
+        editClicked={props.editClicked}
+        handleCancel={props.handleCancel}
+        updateGoal={props.updateGoal}
+        displayUpdatedGoals={props.displayUpdatedGoals}
+        updateBoard={props.updateBoard}
       />
     );
   });
-  return <div className="ui three stackable cards">{boardsList}</div>;
+  return <div className="ui two stackable cards">{boardsList}</div>;
 };
 
 export default BoardList;

@@ -10,15 +10,25 @@ class Sidebar extends Component {
     const user = this.props.user;
     const photo = user.profile_photo;
     return (
-      <div className="column">
-        <div className="ui menu inverted vertical">
+      <div>
+        <div className="ui menu inverted">
           <div className="item">
             <img src={photo} alt=""></img>
           </div>
-          <h3 className="item">{user.first_name + " " + user.last_name}</h3>
-          <h3 className="item">{user.email}</h3>
-          <h3 className="item">{user.location}</h3>
-          <button className="ui button">Create a New Board</button>
+          <h3 className="item">
+            Name: {user.first_name + " " + user.last_name}
+          </h3>
+          <h3 className="item">Email: {user.email}</h3>
+          <h3 className="item">Location: {user.location}</h3>
+          <div className="">
+            <button
+              className="fluid ui button"
+              onClick={() => this.props.createBoard(this.props.user.id)}
+            >
+              Create a New Board
+            </button>
+          </div>
+          <div></div>
         </div>
         <div className="pusher"></div>
       </div>

@@ -9,3 +9,19 @@
 .container {
   background-color: rgb(66, 95, 95);
 }
+
+.board {
+  float: left;
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ui-image {
+  height: 100%;
+  width: 100%;
+  background-image: "https://picsum.photos/id/888/1200/600";
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+}

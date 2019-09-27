@@ -2,46 +2,82 @@ import React, { Component } from "react";
 import "../App.css";
 import GoalsList from "./GoalsList";
 import ImageCollage from "./ImageCollage";
+import BoardEditor from "./BoardEditor";
 
 class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imagesVisible: false
+      imagesVisible: false,
+      showingBoardEditor: false
     };
   }
 
+  renderBoardsAfterSubmit = () => {
+    this.setState({
+      showingBoardEditor: false
+    });
+  };
   changeBoardView = prevState => {
     this.setState(prevState => {
       return { imagesVisible: !this.state.imagesVisible };
     });
   };
 
+  //function to conditionally render <h2> {board.title} or BoardEditor
+  viewBoardEditor = () => {
+    this.setState(prevState => {
+      return { showingBoardEditor: !this.state.showingBoardEditor };
+    });
+  };
+  renderTitleOrEditor = () => {
+    if (this.state.showingBoardEditor === true) {
+      return (
+        <BoardEditor
+          board={this.props.board}
+          updateBoard={this.props.updateBoard}
+          renderBoardsAfterSubmit={this.renderBoardsAfterSubmit}
+        />
+      );
+    } else {
+      return <h2>{this.props.board.title}</h2>;
+    }
+  };
+
   render() {
-    // console.log(this.state);
-    // console.log(this.props);
     const board = this.props.board;
     return (
-      <div className="ui card">
-        <h2>
-          {board.title}
+      <div className="ui card" key={board.id}>
+        {this.renderTitleOrEditor(board)}
+        <div>
           <button
             className="ui small icon button"
-            onClick={console.log("some func for edit Board Title")}
+            onClick={this.viewBoardEditor}
           >
             <i className="pencil icon"></i>
           </button>
           <button
             className="ui small icon button"
-            onClick={console.log("some func for delete Board")}
+            onClick={() => this.props.handleBoardDelete(board)}
           >
             <i className="trash icon"></i>
           </button>
-        </h2>
+        </div>
+
         {this.state.imagesVisible ? (
           <ImageCollage images={this.props.images} />
         ) : (
-          <GoalsList goals={this.props.goals} />
+          <GoalsList
+            handleGoalDelete={this.props.handleGoalDelete}
+            goals={this.props.goals}
+            createGoal={this.props.createGoal}
+            board={this.props.board}
+            handleEditClick={this.props.handleEditClick}
+            editClicked={this.props.editClicked}
+            handleCancel={this.props.handleCancel}
+            updateGoal={this.props.updateGoal}
+            displayUpdatedGoals={this.props.displayUpdatedGoals}
+          />
         )}
 
         <div className="content">

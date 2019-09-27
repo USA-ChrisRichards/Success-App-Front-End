@@ -7,7 +7,7 @@ class Header extends Component {
     return (
       <div className="ui menu">
         <div className="header item" href="...">
-          GoalsApp
+          #Goals
         </div>
         <a className="item" href="...">
           Login
