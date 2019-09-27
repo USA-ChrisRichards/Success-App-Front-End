@@ -7,7 +7,7 @@ class MainContainer extends Component {
     super(props);
     this.state = {
       users: [],
-      logged_in_user: "",
+      loggedInUser: "",
       boards: [],
       images: [],
       goals: []
@@ -17,12 +17,12 @@ class MainContainer extends Component {
   handleSignUp = user => {
     this.createUser();
     this.setState({
-      logged_in_user: user
+      loggedInUser: user
     });
   };
 
   //   handleLogin = user => {
-  //     if (this.state.logged_in_user === "") {
+  //     if (this.state.loggedInUser === "") {
   //     }
 
   //     this.fetchUser();
@@ -69,7 +69,7 @@ class MainContainer extends Component {
       .then(res => res.json())
       .then(user =>
         this.setState({
-          logged_in_user: user
+          loggedInUser: user
         })
       );
   };
@@ -238,7 +238,7 @@ class MainContainer extends Component {
         <div className="">
           <div className="">
             <Sidebar
-              user={this.state.logged_in_user}
+              user={this.state.loggedInUser}
               createBoard={this.createBoard}
             />
           </div>

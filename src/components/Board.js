@@ -40,7 +40,7 @@ class Board extends Component {
         />
       );
     } else {
-      return <h2>{this.props.board.title}</h2>;
+      return <h1>{this.props.board.title}</h1>;
     }
   };
 
@@ -63,22 +63,23 @@ class Board extends Component {
             <i className="trash icon"></i>
           </button>
         </div>
-
-        {this.state.imagesVisible ? (
-          <ImageCollage images={this.props.images} />
-        ) : (
-          <GoalsList
-            handleGoalDelete={this.props.handleGoalDelete}
-            goals={this.props.goals}
-            createGoal={this.props.createGoal}
-            board={this.props.board}
-            handleEditClick={this.props.handleEditClick}
-            editClicked={this.props.editClicked}
-            handleCancel={this.props.handleCancel}
-            updateGoal={this.props.updateGoal}
-            displayUpdatedGoals={this.props.displayUpdatedGoals}
-          />
-        )}
+        <div className="card-content">
+          {this.state.imagesVisible ? (
+            <ImageCollage images={this.props.images} />
+          ) : (
+            <GoalsList
+              handleGoalDelete={this.props.handleGoalDelete}
+              goals={this.props.goals}
+              createGoal={this.props.createGoal}
+              board={this.props.board}
+              handleEditClick={this.props.handleEditClick}
+              editClicked={this.props.editClicked}
+              handleCancel={this.props.handleCancel}
+              updateGoal={this.props.updateGoal}
+              displayUpdatedGoals={this.props.displayUpdatedGoals}
+            />
+          )}
+        </div>
 
         <div className="content">
           <div className="meta">

@@ -17,11 +17,15 @@
   object-fit: cover;
 }
 
-.ui-image {
+/* .ui-fluid-image {
   height: 100%;
   width: 100%;
-  background-image: "https://picsum.photos/id/888/1200/600";
+  background-image: url("https://picsum.photos/id/888/1200/600");
   background-size: cover;
   background-attachment: fixed;
   display: flex;
+} */
+
+ui-fluid-image {
+  background-image: url("https://picsum.photos/id/885/1200/600");
 }

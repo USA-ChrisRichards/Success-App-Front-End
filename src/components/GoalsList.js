@@ -29,19 +29,18 @@ class GoalsList extends Component {
   render() {
     return (
       <div className="">
-        <ul>
-          <h4>
-            Goals List{"   "}
-            <button
-              className="ui button tiny"
-              onClick={() => this.props.createGoal(this.props.board.id)}
-            >
-              Create Goal
-            </button>
-          </h4>
-
-          {this.renderGoals()}
-        </ul>
+        <h2>
+          <button
+            className="ui button tiny"
+            onClick={() => this.props.createGoal(this.props.board.id)}
+          >
+            Create Goal
+          </button>
+        </h2>
+        <em>
+          <h3>Habits to Get YOU There:</h3>
+        </em>
+        <ul>{this.renderGoals()}</ul>
       </div>
     );
   }

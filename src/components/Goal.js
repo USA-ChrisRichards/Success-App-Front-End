@@ -36,10 +36,8 @@ class Goal extends Component {
     return (
       <div key={this.props.goal.id}>
         <li key={this.props.goal.id}>
-          <strong>{this.props.goal.title}</strong>
-
-          <br></br>
-          {this.props.goal.content}
+          <h3>{this.props.goal.title}</h3>
+          <p>{this.props.goal.content}</p>
         </li>
         <div className="content">
           <div className="meta">

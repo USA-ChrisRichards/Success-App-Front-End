@@ -9,11 +9,14 @@ class Header extends Component {
         <div className="header item" href="...">
           #Goals
         </div>
+        <button
+          className="item"
+          onClick={event => this.props.toggleLoginOnClick(event)}
+        >
+          Login / Sign Up
+        </button>
         <a className="item" href="...">
-          Login
-        </a>
-        <a className="item" href="...">
-          Sign Up
+          About
         </a>
         <a className="item" href="...">
           Resources

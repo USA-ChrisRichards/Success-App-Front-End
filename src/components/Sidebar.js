@@ -20,6 +20,9 @@ class Sidebar extends Component {
           </h3>
           <h3 className="item">Email: {user.email}</h3>
           <h3 className="item">Location: {user.location}</h3>
+
+          <button className="ui right floated button inverted">Logout</button>
+
           <div className="">
             <button
               className="fluid ui button"
