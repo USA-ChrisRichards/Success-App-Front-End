@@ -39,27 +39,11 @@ class Goal extends Component {
           <h3>{this.props.goal.title}</h3>
 
           <p>{this.props.goal.content}</p>
-
-          {/* <div className="ui checkbox">
-            <input type="checkbox" name="example"></input>
-            <label>M</label>
-          </div>
-          <div></div>
-          <div className="ui checkbox">
-            <input type="checkbox" name="example"></input>
-            <label>T</label>
-          </div>
-          <div></div>
-          <div className="ui checkbox">
-            <input type="checkbox" name="example"></input>
-            <label>W</label>
-          </div> */}
-          {/* *insert calendar here */}
         </li>
         <br></br>
         <div className="content">
           <div className="meta">
-            <span className="date">{this.props.goal.created_at}</span>
+            {/* <span className="date">{this.props.goal.created_at}</span> */}
           </div>
           <button
             className="ui mini icon button"

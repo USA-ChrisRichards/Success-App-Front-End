@@ -87,7 +87,7 @@ class Board extends Component {
 
         <div className="content">
           <div className="meta">
-            <span className="date">{board.created_at}</span>
+            {/* <span className="date">{board.created_at}</span> */}
           </div>
         </div>
         <div className="extra content">

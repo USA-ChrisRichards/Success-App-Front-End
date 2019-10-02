@@ -22,7 +22,7 @@ const BoardList = props => {
       />
     );
   });
-  return <div className="ui two stackable cards">{boardsList}</div>;
+  return <div className="ui one stackable cards">{boardsList}</div>;
 };
 
 export default BoardList;

@@ -15,8 +15,8 @@ class MainContainer extends Component {
   //*********************************************************** */
   //*Fetching:
 
-  fetchGoals = board_id => {
-    fetch(`http://localhost:3000/api/v1/boards/${board_id}/goals`, {
+  fetchGoals = () => {
+    fetch(`http://localhost:3000/api/v1/goals`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ class MainContainer extends Component {
 
   fetchImages = board_id => {
     //fetch all of a users images then on image collage, filter like in goalslist
-    fetch(`http://localhost:3000/api/v1/boards/${board_id}/images`, {
+    fetch(`http://localhost:3000/api/v1/images`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
