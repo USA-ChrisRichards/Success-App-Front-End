@@ -10,9 +10,17 @@ class Home extends Component {
 
   renderLogin = () => {
     if (this.props.showingLogin === true) {
-      return <LoginForm />;
+      return (
+        <LoginForm
+          loggedInUser={this.props.loggedInUser}
+          handleSignUpSubmit={this.props.handleSignUpSubmit}
+          userPostFetch={this.props.userPostFetch}
+          userLoginFetch={this.props.userLoginFetch}
+        />
+      );
     }
   };
+
   render() {
     return (
       <div className="ui flex container home">
@@ -26,7 +34,7 @@ class Home extends Component {
           <div className="ui fluid image">
             <img
               src="https://picsum.photos/id/885/1200/600"
-              alt="plane"
+              alt="background desk typewriter green"
               className="home image"
             ></img>
           </div>

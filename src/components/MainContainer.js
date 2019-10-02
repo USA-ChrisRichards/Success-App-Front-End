@@ -6,33 +6,25 @@ class MainContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [],
-      loggedInUser: "",
       boards: [],
       images: [],
       goals: []
     };
   }
 
-  handleSignUp = user => {
-    this.createUser();
-    this.setState({
-      loggedInUser: user
-    });
-  };
-
-  //   handleLogin = user => {
-  //     if (this.state.loggedInUser === "") {
-  //     }
-
-  //     this.fetchUser();
-  //   };
-
   //*********************************************************** */
   //*Fetching:
 
   fetchGoals = board_id => {
-    fetch(`http://localhost:3000/api/v1/boards/${1}/goals`)
+    fetch(`http://localhost:3000/api/v1/boards/${board_id}/goals`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${this.props.loggedInUser.jwt}`
+      }
+      // body: JSON.stringify({ user })
+    })
       .then(res => res.json())
       .then(goalData =>
         this.setState({
@@ -42,7 +34,16 @@ class MainContainer extends Component {
   };
 
   fetchImages = board_id => {
-    fetch(`http://localhost:3000/api/v1/boards/${1}/images`)
+    //fetch all of a users images then on image collage, filter like in goalslist
+    fetch(`http://localhost:3000/api/v1/boards/${board_id}/images`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${this.props.loggedInUser.jwt}`
+      }
+      // body: JSON.stringify({ user })
+    })
       .then(res => res.json())
       .then(imageData =>
         this.setState({
@@ -52,9 +53,18 @@ class MainContainer extends Component {
   };
 
   fetchBoards = () => {
-    // GET    /api/v1/users/:user_id/boards
-    fetch(`http://localhost:3000/api/v1/users/${1}/boards`)
-      // will want to bring the id of the user that is logged in
+    fetch(
+      `http://localhost:3000/api/v1/users/${this.props.loggedInUser.user.id}/boards`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${this.props.loggedInUser.jwt}`
+        }
+        // body: JSON.stringify({ user })
+      }
+    )
       .then(res => res.json())
       .then(boardsData =>
         this.setState({
@@ -63,19 +73,7 @@ class MainContainer extends Component {
       );
   };
 
-  fetchUser = () => {
-    fetch(`http://localhost:3000/api/v1/users/${1}`)
-      // will want to bring the id of the user that is logged in
-      .then(res => res.json())
-      .then(user =>
-        this.setState({
-          loggedInUser: user
-        })
-      );
-  };
-
   componentDidMount() {
-    this.fetchUser();
     this.fetchBoards();
     this.fetchGoals();
     this.fetchImages();
@@ -93,7 +91,8 @@ class MainContainer extends Component {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${this.props.loggedInUser.jwt}`
       },
       body: JSON.stringify(newGoal)
     })
@@ -108,13 +107,14 @@ class MainContainer extends Component {
   createBoard = user_id => {
     let newBoard = {
       user_id: user_id,
-      title: "Enter Title Here"
+      title: "Enter Category Here"
     };
     fetch(`http://localhost:3000/api/v1/users/${user_id}/boards`, {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${this.props.loggedInUser.jwt}`
       },
       body: JSON.stringify(newBoard)
     })
@@ -143,7 +143,8 @@ class MainContainer extends Component {
         method: "DELETE",
         headers: {
           Accept: "application/json",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.props.loggedInUser.jwt}`
         },
         body: JSON.stringify(deletedGoal)
       })
@@ -168,7 +169,8 @@ class MainContainer extends Component {
         method: "DELETE",
         headers: {
           Accept: "application/json",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.props.loggedInUser.jwt}`
         },
         body: JSON.stringify(deletedBoard)
       })
@@ -196,7 +198,8 @@ class MainContainer extends Component {
     fetch(`http://localhost:3000/api/v1/goals/${id}`, {
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${this.props.loggedInUser.jwt}`
       },
       method: "PATCH",
       body: JSON.stringify(changes)
@@ -222,7 +225,8 @@ class MainContainer extends Component {
     fetch(`http://localhost:3000/api/v1/boards/${id}`, {
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${this.props.loggedInUser.jwt}`
       },
       method: "PATCH",
       body: JSON.stringify(changes)
@@ -232,14 +236,18 @@ class MainContainer extends Component {
       .catch(error => console.log(error));
   };
 
+  // ****************************************************************** //
+
   render() {
+    console.log(this.state);
     return (
       <div className="ui container">
         <div className="">
           <div className="">
             <Sidebar
-              user={this.state.loggedInUser}
+              // user={this.state.loggedInUser}
               createBoard={this.createBoard}
+              loggedInUser={this.props.loggedInUser}
             />
           </div>
           <div>
@@ -248,6 +256,7 @@ class MainContainer extends Component {
               boards={this.state.boards}
               images={this.state.images}
               goals={this.state.goals}
+              loggedInUser={this.props.loggedInUser}
               createGoal={this.createGoal}
               handleGoalDelete={this.handleGoalDelete}
               handleBoardDelete={this.handleBoardDelete}

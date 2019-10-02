@@ -7,7 +7,7 @@ class Sidebar extends Component {
     this.state = {};
   }
   render() {
-    const user = this.props.user;
+    const user = this.props.loggedInUser.user;
     const photo = user.profile_photo;
     return (
       <div>
@@ -26,7 +26,9 @@ class Sidebar extends Component {
           <div className="">
             <button
               className="fluid ui button"
-              onClick={() => this.props.createBoard(this.props.user.id)}
+              onClick={() =>
+                this.props.createBoard(this.props.loggedInUser.user.id)
+              }
             >
               Create a New Board
             </button>

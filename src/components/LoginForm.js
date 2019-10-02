@@ -7,9 +7,23 @@ class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      signUpVisible: false
+      signUpVisible: false,
+      email: "",
+      password: ""
     };
   }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.userLoginFetch(this.state);
+    console.log("submit");
+  };
 
   hideSignUp = () => {
     this.setState({
@@ -36,6 +50,8 @@ class LoginForm extends Component {
         <SignUpForm
           handleCancel={this.handleCancel}
           cancelSignUp={this.cancelSignUp}
+          handleSignUpSubmit={this.props.handleSignUpSubmit}
+          userPostFetch={this.props.userPostFetch}
         />
       );
     } else {
@@ -60,22 +76,39 @@ class LoginForm extends Component {
       <div className="ui placeholder segment">
         <div className="ui two column very relaxed stackable grid">
           <div className="column">
-            <div className="ui form">
+            <div className="ui form" onSubmit={this.handleSubmit}>
               <div className="field">
                 <label>Email</label>
                 <div className="ui left icon input">
-                  <input type="text" placeholder="Email" name="email"></input>
+                  <input
+                    type="text"
+                    placeholder="Email"
+                    name="email"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                  ></input>
                   <i className="user icon"></i>
                 </div>
               </div>
+
               <div className="field">
                 <label>Password</label>
                 <div className="ui left icon input">
-                  <input type="password" name="password"></input>
+                  <input
+                    type="password"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                  ></input>
                   <i className="lock icon"></i>
                 </div>
               </div>
-              <div className="ui blue submit button">Login</div>
+              <div
+                className="ui blue submit button"
+                onClick={this.handleSubmit}
+              >
+                Login
+              </div>
             </div>
           </div>
           {/* divider */}

@@ -40,7 +40,11 @@ class Board extends Component {
         />
       );
     } else {
-      return <h1>{this.props.board.title}</h1>;
+      return (
+        <h1>
+          My <u>{this.props.board.title}</u> Goals and Habits:
+        </h1>
+      );
     }
   };
 
@@ -65,7 +69,7 @@ class Board extends Component {
         </div>
         <div className="card-content">
           {this.state.imagesVisible ? (
-            <ImageCollage images={this.props.images} />
+            <ImageCollage images={this.props.images} board={this.props.board} />
           ) : (
             <GoalsList
               handleGoalDelete={this.props.handleGoalDelete}

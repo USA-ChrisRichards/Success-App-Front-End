@@ -37,9 +37,7 @@ class GoalsList extends Component {
             Create Goal
           </button>
         </h2>
-        <em>
-          <h3>Habits to Get YOU There:</h3>
-        </em>
+
         <ul>{this.renderGoals()}</ul>
       </div>
     );
