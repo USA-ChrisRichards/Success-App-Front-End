@@ -3,12 +3,13 @@ import "../App.css";
 
 class Header extends Component {
   state = {};
+
   render() {
     return (
       <div className="ui menu">
-        <div className="header item" href="...">
+        <button className="header item" href="...">
           #Goals
-        </div>
+        </button>
         <button
           className="item"
           onClick={event => this.props.toggleLoginOnClick(event)}

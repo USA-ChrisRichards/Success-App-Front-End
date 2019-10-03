@@ -1,12 +1,7 @@
 import "../App.css";
 import React, { Component } from "react";
-// import Image from "./Image.js";
-
-// const renderImages = () => {
-//   return this.filterImages().map(image => {
-//     return <Image key={image.id} image={image} board={this.props.board} />;
-//   });
-// };
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
 
 class ImageCollage extends Component {
   render() {
@@ -15,48 +10,34 @@ class ImageCollage extends Component {
         return image.board_id === this.props.board.id;
       });
     };
+
+    //************************************************ */
+
     return (
-      <div className="ui image container">
-        <div className="ui grid">
-          <div className="">
-            {filterImages().map(image => {
-              return (
+      <div>
+        <Carousel autoPlay>
+          {filterImages().map(image => {
+            return (
+              <div className="carousel">
                 <img
+                  className="ui fluid image"
+                  key={image.id}
                   src={image.url}
                   alt={image.title}
-                  className="board images"
                 ></img>
-              );
-            })}
-          </div>
-        </div>
-        <button>Add an Image</button>
+                <h4 className="legend">{image.title}</h4>
+              </div>
+            );
+          })}
+          {/* end mapping over images */}
+        </Carousel>
+        <br></br>
+        <button className="ui button" onClick={this.addImage}>
+          Add an Image to your Vision Board!
+        </button>
       </div>
     );
   }
 }
 
 export default ImageCollage;
-
-// const ImageCollage = props => {
-//   return (
-//     <div className="ui image container">
-//       <div className="ui grid">
-//         <div className="">
-//           {filterImages().map(image => {
-//             return (
-//               <img
-//                 src={image.url}
-//                 alt={image.title}
-//                 className="board images"
-//               ></img>
-//             );
-//           })}
-//         </div>
-//       </div>
-//       <button>Add an Image</button>
-//     </div>
-//   );
-// };
-
-// export default ImageCollage;

@@ -9,11 +9,11 @@
 
 //? - Implement Browser Router
 
-//*! - Figure out what view images is for? -> Bootstrap carousel?
-//*  - form to paste in url of image, store in images array? Cloudinary?
+// ! Create and Delete board *Images*
+//*  - form to paste in url of image, title..
 //      (params => title, url, board_id)
 
-// -> (motivational quote API, image uploading, slideshow/carousel)
+// -> (motivational quote API, image uploading)
 //  - motivational quote, new every 24 hrs?
 
 //  - track number of times user logs in? views the vision board(click's button, keeps a counter visible, days in a row... etc.)

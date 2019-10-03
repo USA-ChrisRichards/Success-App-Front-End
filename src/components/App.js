@@ -3,14 +3,6 @@ import MainContainer from "./MainContainer";
 import Header from "./Header";
 import Home from "./Home";
 
-// fetch('http://localhost:3000/api/v1/profile', {
-//   method: 'GET',
-//   headers: {
-// Put this Auth header in all fetch requests
-//!     Authorization: `Bearer <token>`
-//   }
-// })
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -70,9 +62,6 @@ class App extends Component {
       .then(data => {
         if (data.message) {
           window.alert(data.message);
-          // Here you should have logic to handle invalid login credentials.
-          // This assumes your Rails API will return a JSON object with a key of
-          // 'message' if there is an error
         } else {
           // localStorage.setItem("token", data.jwt);
           this.setState({

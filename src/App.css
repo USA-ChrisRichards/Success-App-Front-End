@@ -1,3 +1,8 @@
+body {
+  background-color: rgb(66, 95, 95);
+  /* background-image: url("https://picsum.photos/id/885/1200/600"); */
+}
+
 .board {
   min-height: 400px;
 }
@@ -14,7 +19,7 @@
   float: left;
   width: 50%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 /* .ui-fluid-image {
@@ -26,6 +31,11 @@
   display: flex;
 } */
 
-ui-fluid-image {
+/* ui-fluid-image {
   background-image: url("https://picsum.photos/id/885/1200/600");
+} */
+
+img {
+  width: 100%;
+  height: auto;
 }
