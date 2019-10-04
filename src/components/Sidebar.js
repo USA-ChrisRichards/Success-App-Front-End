@@ -21,7 +21,12 @@ class Sidebar extends Component {
           <h3 className="item">Email: {user.email}</h3>
           <h3 className="item">Location: {user.location}</h3>
 
-          <button className="ui right floated button inverted">Logout</button>
+          <button
+            className="ui right floated button inverted"
+            onClick={() => window.location.reload()}
+          >
+            Logout
+          </button>
 
           <div className="">
             <button

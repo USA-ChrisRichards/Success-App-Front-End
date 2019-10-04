@@ -8,7 +8,7 @@ class Header extends Component {
     return (
       <div className="ui menu">
         <button className="header item" href="...">
-          #Goals
+          Success App
         </button>
         <button
           className="item"
